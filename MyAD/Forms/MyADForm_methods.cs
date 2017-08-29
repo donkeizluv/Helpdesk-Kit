@@ -121,7 +121,19 @@ namespace MyAD.Forms
         }
 
         #region Show status
-
+        private void ShowNeverExpired(bool neverExpired)
+        {
+            if (neverExpired)
+            {
+                lbPwdNoExpired.Text = "Never expired";
+                lbPwdNoExpired.ForeColor = Color.Green;
+            }
+            else
+            {
+                lbPwdNoExpired.Text = "Normal";
+                lbPwdNoExpired.ForeColor = Color.Black;
+            }
+        }
         private void ShowIsExpired(string s)
         {
             labelPwdExp.Text = s + " (Expired)";

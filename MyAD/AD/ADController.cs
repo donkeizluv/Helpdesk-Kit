@@ -436,7 +436,19 @@ namespace MyAD.AD
             }
             return false;
         }
+        public bool IsPwsNeverExpired(DirectoryEntry entry)
+        {
+            bool check = false;
 
+            int m_Val1 = (int)entry.Properties["userAccountControl"].Value;
+            int m_Val2 = (int)0x10000;
+
+            if (Convert.ToBoolean(m_Val1 & m_Val2))
+            {
+                check = true;
+            } //end
+            return check;
+        }
         public DirectoryEntry CreateNewUser(string sCN)
         {
             //Set the LDAP Path so that the user will be Created under the Users Container

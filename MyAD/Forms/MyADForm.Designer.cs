@@ -38,6 +38,8 @@
             this.buttonDeactive = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbPwdNoExpired = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.labelBatch = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.richTextBoxRole = new System.Windows.Forms.RichTextBox();
@@ -101,7 +103,7 @@
             // 
             // buttonFetch
             // 
-            this.buttonFetch.Location = new System.Drawing.Point(315, 53);
+            this.buttonFetch.Location = new System.Drawing.Point(308, 53);
             this.buttonFetch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFetch.Name = "buttonFetch";
             this.buttonFetch.Size = new System.Drawing.Size(66, 28);
@@ -117,11 +119,11 @@
             this.groupBox1.Controls.Add(this.buttonChange);
             this.groupBox1.Controls.Add(this.buttonUnlock);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(275, 98);
+            this.groupBox1.Location = new System.Drawing.Point(268, 98);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(143, 231);
+            this.groupBox1.Size = new System.Drawing.Size(143, 255);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Action";
@@ -165,6 +167,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbPwdNoExpired);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.labelBatch);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.richTextBoxRole);
@@ -180,15 +184,35 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(245, 231);
+            this.groupBox2.Size = new System.Drawing.Size(243, 255);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "User:";
             // 
+            // lbPwdNoExpired
+            // 
+            this.lbPwdNoExpired.AutoSize = true;
+            this.lbPwdNoExpired.Location = new System.Drawing.Point(79, 118);
+            this.lbPwdNoExpired.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbPwdNoExpired.Name = "lbPwdNoExpired";
+            this.lbPwdNoExpired.Size = new System.Drawing.Size(32, 17);
+            this.lbPwdNoExpired.TabIndex = 12;
+            this.lbPwdNoExpired.Text = "Null";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(40, 118);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 17);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Exp:";
+            // 
             // labelBatch
             // 
             this.labelBatch.AutoSize = true;
-            this.labelBatch.Location = new System.Drawing.Point(86, 118);
+            this.labelBatch.Location = new System.Drawing.Point(79, 144);
             this.labelBatch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBatch.Name = "labelBatch";
             this.labelBatch.Size = new System.Drawing.Size(32, 17);
@@ -198,7 +222,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 118);
+            this.label6.Location = new System.Drawing.Point(25, 144);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 17);
@@ -207,18 +231,18 @@
             // 
             // richTextBoxRole
             // 
-            this.richTextBoxRole.Location = new System.Drawing.Point(88, 149);
+            this.richTextBoxRole.Location = new System.Drawing.Point(81, 177);
             this.richTextBoxRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBoxRole.Name = "richTextBoxRole";
             this.richTextBoxRole.ReadOnly = true;
-            this.richTextBoxRole.Size = new System.Drawing.Size(143, 67);
+            this.richTextBoxRole.Size = new System.Drawing.Size(150, 67);
             this.richTextBoxRole.TabIndex = 8;
             this.richTextBoxRole.Text = "";
             // 
             // labelPwdExp
             // 
             this.labelPwdExp.AutoSize = true;
-            this.labelPwdExp.Location = new System.Drawing.Point(86, 92);
+            this.labelPwdExp.Location = new System.Drawing.Point(79, 92);
             this.labelPwdExp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPwdExp.Name = "labelPwdExp";
             this.labelPwdExp.Size = new System.Drawing.Size(32, 17);
@@ -228,7 +252,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 92);
+            this.label7.Location = new System.Drawing.Point(9, 92);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 17);
@@ -238,7 +262,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 149);
+            this.label4.Location = new System.Drawing.Point(33, 177);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 17);
@@ -248,7 +272,7 @@
             // labelActive
             // 
             this.labelActive.AutoSize = true;
-            this.labelActive.Location = new System.Drawing.Point(86, 65);
+            this.labelActive.Location = new System.Drawing.Point(79, 65);
             this.labelActive.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelActive.Name = "labelActive";
             this.labelActive.Size = new System.Drawing.Size(32, 17);
@@ -258,7 +282,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 65);
+            this.label5.Location = new System.Drawing.Point(25, 65);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 17);
@@ -268,7 +292,7 @@
             // labelLock
             // 
             this.labelLock.AutoSize = true;
-            this.labelLock.Location = new System.Drawing.Point(86, 39);
+            this.labelLock.Location = new System.Drawing.Point(79, 39);
             this.labelLock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLock.Name = "labelLock";
             this.labelLock.Size = new System.Drawing.Size(32, 17);
@@ -278,7 +302,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 39);
+            this.label2.Location = new System.Drawing.Point(35, 39);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 17);
@@ -294,7 +318,7 @@
             this.labelGeneral.Location = new System.Drawing.Point(0, 0);
             this.labelGeneral.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelGeneral.Name = "labelGeneral";
-            this.labelGeneral.Size = new System.Drawing.Size(433, 43);
+            this.labelGeneral.Size = new System.Drawing.Size(422, 43);
             this.labelGeneral.TabIndex = 4;
             this.labelGeneral.Text = "...";
             this.labelGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -303,7 +327,7 @@
             // 
             this.labelVer.AutoSize = true;
             this.labelVer.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelVer.Location = new System.Drawing.Point(283, 333);
+            this.labelVer.Location = new System.Drawing.Point(266, 359);
             this.labelVer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVer.Name = "labelVer";
             this.labelVer.Size = new System.Drawing.Size(30, 17);
@@ -325,7 +349,7 @@
             this.showLockoutReportToolStripMenuItem,
             this.showLogsToolStripMenuItem});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(223, 254);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(223, 282);
             this.contextMenuStripMain.Text = "Settings";
             // 
             // topmostToolStripMenuItem
@@ -429,7 +453,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(433, 355);
+            this.ClientSize = new System.Drawing.Size(422, 382);
             this.ContextMenuStrip = this.contextMenuStripMain;
             this.Controls.Add(this.labelCurrentActing);
             this.Controls.Add(this.labelVer);
@@ -493,6 +517,8 @@
         private System.Windows.Forms.ToolStripMenuItem autoReplyToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFolderName;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxRootFolder;
+        private System.Windows.Forms.Label lbPwdNoExpired;
+        private System.Windows.Forms.Label label8;
     }
 }
 

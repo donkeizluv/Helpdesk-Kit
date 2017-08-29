@@ -76,6 +76,7 @@ namespace MyAD.Forms
         public bool IsCurrentEntryLocked { get; set; }
         public bool IsCurrentEntryPwdNotExpired { get; set; }
         public bool IsCurrentEntryActive { get; set; }
+        public bool IsPwdNeverExpired { get; set; }
 
         public bool ParseForID { get; set; }
         public Color BeerModeColor { get; } = Color.MintCream;
@@ -136,6 +137,7 @@ namespace MyAD.Forms
             SetActionButtion(false);
             buttonDeactive.Enabled = false;
             labelVer.Text = $"Ver: {Assembly.GetEntryAssembly().GetName().Version} - Hongln";
+            LoadAutoReplySetting();
         }
 
         private void SetLoggedInAdm(string adm)
@@ -379,6 +381,7 @@ namespace MyAD.Forms
         {
             labelCurrentActing.Text = CurrentEntryName;
             IsCurrentEntryLocked = _controller.IsAccountLocked(_currentEntry);
+            IsPwdNeverExpired = _controller.IsPwsNeverExpired(_currentEntry);
             IsCurrentEntryActive = _controller.IsAccountActive(CurrentEntryName);
             //show active status
             if (IsCurrentEntryActive)
@@ -393,10 +396,13 @@ namespace MyAD.Forms
             var expDate = _controller.GetPasswordExpirationDate(_currentEntry);
             //show pwd expiration
             IsCurrentEntryPwdNotExpired = DateTime.Compare(DateTime.Today, expDate.Date) < 0;
-            if (IsCurrentEntryPwdNotExpired)
+            if (IsCurrentEntryPwdNotExpired || IsPwdNeverExpired)
                 ShowNotExpired(expDate.ToShortDateString());
             else
                 ShowIsExpired(expDate.ToShortDateString());
+            //show never expire status
+            ShowNeverExpired(IsPwdNeverExpired);
+
             //show user role
             richTextBoxRole.Text = _controller.GetProperty(_currentEntry, "description");
             //show user batch if any
@@ -519,18 +525,35 @@ namespace MyAD.Forms
         {
             //_lockOut.Show();
         }
-
+        private void LoadAutoReplySetting()
+        {
+            GetAutoReplySetting(out string mailbox, out string folder);
+            toolStripTextBoxFolderName.Text = folder;
+            toolStripTextBoxRootFolder.Text = mailbox;
+        }
+        private void SaveAutoReplySetting(string mailbox, string folder)
+        {
+            Properties.Settings.Default.Mailbox = mailbox;
+            Properties.Settings.Default.Folder = folder;
+            Properties.Settings.Default.Save();
+        }
+        private void GetAutoReplySetting(out string mailbox, out string folder)
+        {
+            mailbox = Properties.Settings.Default.Mailbox;
+            folder = Properties.Settings.Default.Folder;
+        }
         private void AutoReplyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //vadidate
             if (autoReplyToolStripMenuItem.Checked)
             {
-                if (toolStripTextBoxFolderName.Text == string.Empty || toolStripTextBoxRootFolder.Text == string.Empty)
+                if (string.IsNullOrEmpty(toolStripTextBoxFolderName.Text) || string.IsNullOrEmpty(toolStripTextBoxRootFolder.Text))
                 {
                     MessageBox.Show("Enter folder name first!");
                     autoReplyToolStripMenuItem.Checked = false;
                     return;
                 }
+                SaveAutoReplySetting(toolStripTextBoxRootFolder.Text, toolStripTextBoxFolderName.Text);
                 if(CheckOutlook())
                     StartMonitor();
                 else
@@ -641,7 +664,7 @@ namespace MyAD.Forms
                     _logger.Log($"reply -> not active");
                     return;
                 }
-                if(!IsCurrentEntryPwdNotExpired)
+                if(!IsCurrentEntryPwdNotExpired && !IsPwdNeverExpired)
                 {
                     _outlook.Reply_PwdExpired(e.Email);
                     _logger.Log($"reply -> pwd expired");
